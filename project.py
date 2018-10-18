@@ -52,9 +52,29 @@ def move_final(move):
 #List of lists that represent the game board's lines
 #A sublist has a representation of a line's content
 #which can be one and only one of Content type.
+def board_moves(board):
+    #aplicar a funcao actions do search.py
+    boardMoves = Problem(board)
+    return boardMoves.actions(board)
+
+def print_board(board):
+    for l in board:
+        print(l)
+    return 0
 
 # -------- main function --------
 def main():
+    board = [["X","X","O","O","O","O","O","X","X"],
+            ["X","X","O","O","O","O","O","X","X"],
+            ["O","O","O","O","O","O","O","O","O"],
+            ["O","O","O","O","O","O","O","O","O"],
+            ["O","O","O","O","_","O","O","O","O"],
+            ["O","O","O","O","O","O","O","O","O"],
+            ["O","O","O","O","O","O","O","O","O"],
+            ["X","X","O","O","O","O","O","X","X"],
+            ["X","X","O","O","O","O","O","X","X"]]
+    board_moves(board)
+    print_board(board)
     return 0
 
 

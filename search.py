@@ -40,7 +40,8 @@ class Problem(object):
         state. The result would typically be a list, but if there are
         many actions, consider yielding them one at a time in an
         iterator, rather than building them all at once."""
-        raise NotImplementedError
+        print("Not implemented yet")
+        #raise NotImplementedError
 
     def result(self, state, action):
         """Return the state that results from executing the given

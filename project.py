@@ -2,7 +2,8 @@
          - Solitaire Puzzles -
                             Group 24'''
 
-#import
+from search import *
+from utils import *
 
 
 # -------- auxiliar functions --------

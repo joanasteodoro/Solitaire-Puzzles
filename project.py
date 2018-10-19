@@ -70,7 +70,18 @@ def board_moves(board):
     return result
 
 def board_perform_move(board, move):
-    return 0
+    if(move[0][0] == move[1][0] and move[0][1] - move[1][1] > 0):
+        board[move[0][0]][move[0][1]-1] = "_"
+    elif(move[0][0] == move[1][0] and move[0][0]):
+        board[move[0][0]][move[0][1]+1] = "_"
+    elif(move[0][1] == move[1][1] and move[0][0] - move[1][0] > 0):
+        board[move[0][0]-1][move[0][1]] = "_"
+    else:
+        board[move[0][0]+1][move[0][1]] = "_"
+
+    board[move[0][0]][move[0][1]] = "_"
+    board[move[1][0]][move[1][1]] = "O"
+    return board
 
 def print_board(board):
     for l in board:
@@ -91,6 +102,8 @@ def main():
     board = [["_","O","O","O","_"], ["O","_","O","_","O"], ["_","O","_","O","_"], ["O","_","O","_","_"], ["_","O","_","_","_"]]
     print(board_moves(board))
     print_board(board)
+    print("____________________________" + "\n")
+    print_board(board_perform_move(board, [(0, 2), (0, 0)]))
     return 0
 
 

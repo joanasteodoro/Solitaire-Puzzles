@@ -53,8 +53,21 @@ def move_final(move):
 #A sublist has a representation of a line's content
 #which can be one and only one of Content type.
 def board_moves(board):
-    boardMoves = Problem(board)
-    return boardMoves.actions(board)
+    result = []
+    l = len(board)
+    for i in range(l):
+        c = len(board[i])
+        for j in range(c):
+            if(board[i][j] == "O"):
+                if(j-2 >= 0 and board[i][j-2] == "_" and board[i][j-1] == "O"):
+                    result += [[(i, j), (i, j-2)]]
+                if(j+2 < c and board[i][j+2] == "_" and board[i][j+1] == "O"):
+                    result += [[(i, j), (i, j+2)]]
+                if i+2 < l and board[i+2][j] == "_" and board[i+1][j] == "O":
+                    result += [[(i, j), (i+2, j)]]
+                if i-2 >= 0 and board[i-2][j] == "_" and board[i-1][j] == "O":
+                    result += [[(i, j), (i-2, j)]]
+    return result
 
 def board_perform_move(board, move):
     return 0

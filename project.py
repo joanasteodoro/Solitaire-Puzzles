@@ -89,7 +89,7 @@ def print_board(board):
     return 0
 
 #TAI sol_state
-#
+#slot called board that represents its state 
 class sol_state:
     def __int__(self, board):
         self.board = board

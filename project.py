@@ -53,27 +53,30 @@ def move_final(move):
 #A sublist has a representation of a line's content
 #which can be one and only one of Content type.
 def board_moves(board):
-    #aplicar a funcao actions do search.py
     boardMoves = Problem(board)
     return boardMoves.actions(board)
+
+def board_perform_move(board, move):
+    return 0
 
 def print_board(board):
     for l in board:
         print(l)
     return 0
 
+#TAI sol_state
+#
+class sol_state:
+    def __int__(self, board):
+        self.board = board
+
+    def __lt__(self, other_sol_state):
+        return 0
+
 # -------- main function --------
 def main():
-    board = [["X","X","O","O","O","O","O","X","X"],
-            ["X","X","O","O","O","O","O","X","X"],
-            ["O","O","O","O","O","O","O","O","O"],
-            ["O","O","O","O","O","O","O","O","O"],
-            ["O","O","O","O","_","O","O","O","O"],
-            ["O","O","O","O","O","O","O","O","O"],
-            ["O","O","O","O","O","O","O","O","O"],
-            ["X","X","O","O","O","O","O","X","X"],
-            ["X","X","O","O","O","O","O","X","X"]]
-    board_moves(board)
+    board = [["_","O","O","O","_"], ["O","_","O","_","O"], ["_","O","_","O","_"], ["O","_","O","_","_"], ["_","O","_","_","_"]]
+    print(board_moves(board))
     print_board(board)
     return 0
 

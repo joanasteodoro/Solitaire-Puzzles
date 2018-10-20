@@ -89,13 +89,40 @@ def print_board(board):
     return 0
 
 #TAI sol_state
-#slot called board that represents its state 
+#slot called board that represents its state
 class sol_state:
     def __int__(self, board):
         self.board = board
 
     def __lt__(self, other_sol_state):
-        return 0
+        return self.board < other_sol_state
+
+
+class solitaire(Problem):
+    def __int__(self, board):
+        goal_number_marbles = 1
+        self.board = board
+        super(solitaire, self).__init__(sol_state(board), sol_state(goal_number_marbles))
+
+    def actions(self, state):
+        result = board_moves(state.board)
+
+    def result(self, state, action):
+        new_state = sol_state(board_perform_move(state.board, action))
+        return new_state
+
+    def goal_test(self, state):
+        count = 0
+        for i in state:
+            for j in state[i]:
+                if(state[i][j] == "O"):
+                    count += 1
+        if(count != 1):
+            return False
+        return True
+
+    def path_cost(self, c, state1, action, state2):
+        print("gajas")
 
 # -------- main function --------
 def main():

@@ -35,27 +35,11 @@ class Problem(object):
         self.initial = initial
         self.goal = goal
 
+    def actions(self, state):
         """Return the actions that can be executed in the given
         state. The result would typically be a list, but if there are
         many actions, consider yielding them one at a time in an
         iterator, rather than building them all at once."""
-    def actions(self, state):
-        '''result = []
-        l = len(state)
-        for i in range(l):
-            c = len(state[i])
-            for j in range(c):
-                if(state[i][j] == "O"):
-                    if(j-2 >= 0 and state[i][j-2] == "_" and state[i][j-1] == "O"):
-                        result += [[(i, j), (i, j-2)]]
-                    if(j+2 < c and state[i][j+2] == "_" and state[i][j+1] == "O"):
-                        result += [[(i, j), (i, j+2)]]
-                    if i+2 < l and state[i+2][j] == "_" and state[i+1][j] == "O":
-                        result += [[(i, j), (i+2, j)]]
-                    if i-2 >= 0 and state[i-2][j] == "_" and state[i-1][j] == "O":
-                        result += [[(i, j), (i-2, j)]]
-
-        return result'''
         raise NotImplementedError
 
     def result(self, state, action):

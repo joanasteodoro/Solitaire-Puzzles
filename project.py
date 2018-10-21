@@ -98,14 +98,7 @@ class sol_state:
             self.marbles = board
 
     def __lt__(self, other_sol_state):
-        if(isinstance(other_sol_state.board, list)):
-            for i in range(self.board):
-                for j in range(self.board[i]):
-                    if(self.board[i][j] != other_sol_state.board[i][j]):
-                        return False
-            return True
-        else:
-            return self.marbles < other_sol_state.board
+        return self.board == other_sol_state.board
 
 
 class solitaire(Problem):
@@ -120,7 +113,7 @@ class solitaire(Problem):
 
     def result(self, state, action):
         new_state = sol_state(board_perform_move(state.board, action))
-        return new_state.board
+        return new_state
 
     def goal_test(self, state):
         count = 0
@@ -135,19 +128,5 @@ class solitaire(Problem):
     def path_cost(self, c, state1, action, state2):
         return c + 1
 
-# -------- main function --------
-def main():
-    board = [["_","O","O","O","_"], ["O","_","O","_","O"], ["_","O","_","O","_"], ["O","_","O","_","_"], ["_","O","_","_","_"]]
-    board2 = [["O","_","_","O","_"], ["O","_","O","_","O"], ["_","O","_","O","_"], ["O","_","O","_","_"], ["_","O","_","_","_"]]
-    state = sol_state(board)
-    state2 = sol_state(board2)
-    p = solitaire(state)
-    p2 = solitaire(state2)
-    print(p.actions(state))
-    print_board(p.result(state, [(0, 2), (0, 0)]))
-    print(p.goal_test(state))
-    print(p.path_cost(2, state, "gajas", state2))
-    return 0
-
-
-main()
+    def h(self, node):
+        return 0

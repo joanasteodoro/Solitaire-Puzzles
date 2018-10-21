@@ -133,16 +133,20 @@ class solitaire(Problem):
         return True
 
     def path_cost(self, c, state1, action, state2):
-        print("gajas")
+        return c + 1
 
 # -------- main function --------
 def main():
     board = [["_","O","O","O","_"], ["O","_","O","_","O"], ["_","O","_","O","_"], ["O","_","O","_","_"], ["_","O","_","_","_"]]
+    board2 = [["O","_","_","O","_"], ["O","_","O","_","O"], ["_","O","_","O","_"], ["O","_","O","_","_"], ["_","O","_","_","_"]]
     state = sol_state(board)
+    state2 = sol_state(board2)
     p = solitaire(state)
+    p2 = solitaire(state2)
     print(p.actions(state))
     print_board(p.result(state, [(0, 2), (0, 0)]))
     print(p.goal_test(state))
+    print(p.path_cost(2, state, "gajas", state2))
     return 0
 
 

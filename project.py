@@ -91,21 +91,32 @@ def print_board(board):
 #TAI sol_state
 #slot called board that represents its state
 class sol_state:
-    def __int__(self, board):
-        self.board = board
+    def __init__(self, board):
+        if(isinstance(board, list)):
+            self.board = board
+        else:
+            self.marbles = board
 
     def __lt__(self, other_sol_state):
-        return self.board < other_sol_state
+        if(isinstance(other_sol_state.board, list)):
+            for i in range(self.board):
+                for j in range(self.board[i]):
+                    if(self.board[i][j] != other_sol_state.board[i][j]):
+                        return False
+            return True
+        else:
+            return self.marbles < other_sol_state.board
 
 
 class solitaire(Problem):
-    def __int__(self, board):
-        goal_number_marbles = 1
+    def __init__(self, board):
+        goal_number_marbles = 1 #nsei se podemos fazer isto porque quando chamamos a sol_state ela recebe um board e nao um inteiro
         self.board = board
         super(solitaire, self).__init__(sol_state(board), sol_state(goal_number_marbles))
 
     def actions(self, state):
         result = board_moves(state.board)
+        return result
 
     def result(self, state, action):
         new_state = sol_state(board_perform_move(state.board, action))
@@ -127,10 +138,14 @@ class solitaire(Problem):
 # -------- main function --------
 def main():
     board = [["_","O","O","O","_"], ["O","_","O","_","O"], ["_","O","_","O","_"], ["O","_","O","_","_"], ["_","O","_","_","_"]]
-    print(board_moves(board))
+    state = sol_state(board)
+    p = solitaire(state)
+    print(p.actions(state))
+    print(p.result(state, [(0, 2), (0, 0)]))
+    '''print(board_moves(board))
     print_board(board)
     print("____________________________" + "\n")
-    print_board(board_perform_move(board, [(0, 2), (0, 0)]))
+    print_board(board_perform_move(board, [(0, 2), (0, 0)]))'''
     return 0
 
 

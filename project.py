@@ -120,7 +120,7 @@ class solitaire(Problem):
 
     def result(self, state, action):
         new_state = sol_state(board_perform_move(state.board, action))
-        return new_state
+        return new_state.board
 
     def goal_test(self, state):
         count = 0
@@ -141,7 +141,7 @@ def main():
     state = sol_state(board)
     p = solitaire(state)
     print(p.actions(state))
-    print(p.result(state, [(0, 2), (0, 0)]))
+    print_board(p.result(state, [(0, 2), (0, 0)]))
     '''print(board_moves(board))
     print_board(board)
     print("____________________________" + "\n")

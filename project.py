@@ -98,7 +98,7 @@ class sol_state:
             self.marbles = board
 
     def __lt__(self, other_sol_state):
-        return self.board == other_sol_state.board
+        return self.board < other_sol_state.board
 
 
 class solitaire(Problem):

@@ -124,9 +124,9 @@ class solitaire(Problem):
 
     def goal_test(self, state):
         count = 0
-        for i in state:
-            for j in state[i]:
-                if(state[i][j] == "O"):
+        for i in range(len(state.board)):
+            for j in range(len(state.board[i])):
+                if(state.board[i][j] == "O"):
                     count += 1
         if(count != 1):
             return False
@@ -142,10 +142,7 @@ def main():
     p = solitaire(state)
     print(p.actions(state))
     print_board(p.result(state, [(0, 2), (0, 0)]))
-    '''print(board_moves(board))
-    print_board(board)
-    print("____________________________" + "\n")
-    print_board(board_perform_move(board, [(0, 2), (0, 0)]))'''
+    print(p.goal_test(state))
     return 0
 
 

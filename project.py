@@ -4,6 +4,7 @@
 
 from search import *
 from utils import *
+import copy
 
 
 # -------- auxiliar functions --------
@@ -70,18 +71,18 @@ def board_moves(board):
     return result
 
 def board_perform_move(board, move):
-    if(move[0][0] == move[1][0] and move[0][1] - move[1][1] > 0):
-        board[move[0][0]][move[0][1]-1] = "_"
-    elif(move[0][0] == move[1][0] and move[0][0]):
-        board[move[0][0]][move[0][1]+1] = "_"
-    elif(move[0][1] == move[1][1] and move[0][0] - move[1][0] > 0):
-        board[move[0][0]-1][move[0][1]] = "_"
-    else:
-        board[move[0][0]+1][move[0][1]] = "_"
-
-    board[move[0][0]][move[0][1]] = "_"
-    board[move[1][0]][move[1][1]] = "O"
-    return board
+	new_board = copy.deepcopy(board)
+	if(move[0][0] == move[1][0] and move[0][1] - move[1][1] > 0):
+		new_board[move[0][0]][move[0][1]-1] = "_"
+	elif(move[0][0] == move[1][0] and move[0][0]):
+		new_board[move[0][0]][move[0][1]+1] = "_"
+	elif(move[0][1] == move[1][1] and move[0][0] - move[1][0] > 0):
+		new_board[move[0][0]-1][move[0][1]] = "_"
+	else:
+		new_board[move[0][0]+1][move[0][1]] = "_"
+	new_board[move[0][0]][move[0][1]] = "_"
+	new_board[move[1][0]][move[1][1]] = "O"
+	return new_board
 
 def print_board(board):
     for l in board:

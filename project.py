@@ -130,4 +130,14 @@ class solitaire(Problem):
         return c + 1
 
     def h(self, node):
-        return 0
+    	n_pecas = 0
+    	n_espacos = 1
+    	for i in range(len(node.state.board)):
+    		for j in range(len(node.state.board[i])):
+    			if(node.state.board[i][j] == "O"):
+    				n_pecas += 1
+    			else:
+    				n_espacos += 1
+    	#print("Tenho isto: " + str(n_pecas/(n_espacos - 1)))
+    	return n_pecas/n_espacos - 1
+#print([["O","O","O","X","X"],["O","O","O","O","O"],["O","_","O","_","O"],["O","O","O","O","O"]],greedy_search(solitaire([["O","O","O","X","X"],["O","O","O","O","O"],["O","_","O","_","O"],["O","O","O","O","O"]])))

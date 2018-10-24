@@ -5,6 +5,9 @@
 from search import *
 from utils import *
 import copy
+from datetime import datetime
+
+startTime = datetime.now()
 
 
 # -------- auxiliar functions --------
@@ -141,4 +144,14 @@ class solitaire(Problem):
             for j in range(len(node.state.board[i])):
                 if(node.state.board[i][j] == "O"):
                     pegs += 1
+        print("ando")
         return pegs + len(board_moves(node.state.board))
+
+print([["O","O","O","X","X","X"],
+ ["O","_","O","O","O","O"],
+ ["O","O","O","O","O","O"],
+ ["O","O","O","O","O","O"]]   , depth_first_graph_search(solitaire([["O","O","O","X","X","X"],
+ ["O","_","O","O","O","O"],
+ ["O","O","O","O","O","O"],
+ ["O","O","O","O","O","O"]]   )))
+print(datetime.now() - startTime)

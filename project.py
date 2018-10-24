@@ -101,6 +101,12 @@ class sol_state:
     def __lt__(self, other_sol_state):
         return self.board < other_sol_state.board
 
+    def __eq__(self, other):
+        return isinstance(other, sol_state) and self.board == other.board
+
+    def __hash__(self):
+        return hash(str(self.board))
+
 
 class solitaire(Problem):
     def __init__(self, board):
@@ -130,14 +136,9 @@ class solitaire(Problem):
         return c + 1
 
     def h(self, node):
-    	n_pecas = 0
-    	n_espacos = 1
-    	for i in range(len(node.state.board)):
-    		for j in range(len(node.state.board[i])):
-    			if(node.state.board[i][j] == "O"):
-    				n_pecas += 1
-    			else:
-    				n_espacos += 1
-    	#print("Tenho isto: " + str(n_pecas/(n_espacos - 1)))
-    	return n_pecas/n_espacos - 1
-#print([["O","O","O","X","X"],["O","O","O","O","O"],["O","_","O","_","O"],["O","O","O","O","O"]],greedy_search(solitaire([["O","O","O","X","X"],["O","O","O","O","O"],["O","_","O","_","O"],["O","O","O","O","O"]])))
+        pegs = 0
+        for i in range(len(node.state.board)):
+            for j in range(len(node.state.board[i])):
+                if(node.state.board[i][j] == "O"):
+                    pegs += 1
+        return pegs + len(board_moves(node.state.board))

@@ -146,12 +146,3 @@ class solitaire(Problem):
                     pegs += 1
         print("ando")
         return pegs + len(board_moves(node.state.board))
-
-print([["O","O","O","X","X","X"],
- ["O","_","O","O","O","O"],
- ["O","O","O","O","O","O"],
- ["O","O","O","O","O","O"]]   , depth_first_graph_search(solitaire([["O","O","O","X","X","X"],
- ["O","_","O","O","O","O"],
- ["O","O","O","O","O","O"],
- ["O","O","O","O","O","O"]]   )))
-print(datetime.now() - startTime)

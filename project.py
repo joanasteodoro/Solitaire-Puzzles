@@ -144,5 +144,4 @@ class solitaire(Problem):
             for j in range(len(node.state.board[i])):
                 if(node.state.board[i][j] == "O"):
                     pegs += 1
-        print("ando")
         return pegs + len(board_moves(node.state.board))

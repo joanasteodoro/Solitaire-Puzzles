@@ -113,7 +113,7 @@ class sol_state:
 
 class solitaire(Problem):
     def __init__(self, board):
-        goal_number_marbles = 1 #nsei se podemos fazer isto porque quando chamamos a sol_state ela recebe um board e nao um inteiro
+        goal_number_marbles = 1
         self.board = board
         super(solitaire, self).__init__(sol_state(board), sol_state(goal_number_marbles))
 
